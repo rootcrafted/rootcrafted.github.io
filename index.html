@@ -1,1 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rootcrafted · Anthony Daniel</title>
+  <meta name="description" content="Rootcrafted — systems crafted with intent. Anthony Daniel · Linux, systems, and tooling." />
+  <meta property="og:title" content="Rootcrafted · Anthony Daniel" />
+  <meta property="og:description" content="Linux · Systems · Tooling · Chef turned Technologist" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rootcrafted.tech" />
+  <meta name="theme-color" content="#0ef" />
+  <style>
+  :root{
+    --bg:#0b0f13;
+    --panel:#95989b1a; /* your chosen tone, semi-transparent */
+    --text:#dce6ef;
+    --muted:#a6b6c8;
+    --accent:#0ef;
+    --accent-2:#7ef9ff;
+    --ok:#79e0a8;
+    --border:rgba(126,249,255,0.22);
+    --border-strong:rgba(126,249,255,0.28);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 800px at 20% -10%, rgba(14,255,255,0.08), transparent 65%),
+      radial-gradient(1000px 600px at 120% 120%, rgba(14,255,255,0.06), transparent 60%),
+      linear-gradient(180deg, #0b0f13 0%, #0a0e12 100%);
+    letter-spacing:0.2px;
+  }
+  body:before{
+    content:""; position:fixed; inset:0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.02), rgba(255,255,255,0.02) 1px,
+      transparent 1px, transparent 3px
+    );
+    pointer-events:none;
+  }
+  .wrap{
+    min-height:100%;
+    display:grid; place-items:center;
+    padding:4rem 1.5rem;
+  }
+  .card{
+    width:min(1040px, 94vw);
+    background: var(--panel);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:2.2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45),
+                inset 0 0 0 1px rgba(14,239,255,0.06);
+    position:relative; overflow:hidden;
+  }
+  .glow{
+    position:absolute; inset:-20%;
+    background: radial-gradient(600px 300px at 80% -10%, rgba(14,239,255,0.08), transparent 60%),
+                radial-gradient(400px 300px at -10% 120%, rgba(126,249,255,0.06), transparent 60%);
+    filter: blur(10px); pointer-events:none;
+  }
+  header{
+    display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    border-bottom:1px dashed var(--border-strong);
+    padding-bottom:1rem; margin-bottom:1.5rem;
+  }
+  .brand{display:flex; align-items:center; gap:0.9rem;}
+  .logo{
+    width:44px; height:44px; border-radius:12px;
+    background:
+      conic-gradient(from 180deg at 50% 50%, rgba(14,239,255,0.2), transparent 70%),
+      radial-gradient(100% 100% at 30% 30%, rgba(126,249,255,0.25), transparent 60%),
+      linear-gradient(135deg, #071018, #0c1822);
+    border:1px solid var(--border-strong);
+    box-shadow: inset 0 0 18px rgba(14,239,255,0.08), 0 0 0 2px rgba(14,239,255,0.05);
+  }
+  h1{font-size:clamp(1.4rem, 1.2rem + 1.2vw, 2rem); margin:0; letter-spacing:0.6px}
+  .tag{color:var(--muted); font-size:0.98rem}
+  .grid{
+    display:grid; gap:1.2rem;
+    grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+    margin-top:0.5rem;
+  }
+  .panel{
+    padding:1.15rem 1.2rem;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background: linear-gradient(180deg, rgba(149,152,155,0.15), rgba(149,152,155,0.06)); /* lighter metallic tone */
+    box-shadow: inset 0 0 0 1px rgba(14,239,255,0.04),
+                0 8px 30px rgba(149,152,155,0.05);
+  }
+  .panel h2{
+    margin:0 0 0.6rem 0; font-size:1.0rem; color:var(--accent);
+    letter-spacing:0.4px; text-transform:uppercase;
+  }
+  p{margin:0.5rem 0; color:var(--text)}
+  .muted{color:var(--muted)}
+  .kbd{
+    display:inline-block; padding:0.08rem 0.4rem;
+    border:1px solid var(--border-strong);
+    border-radius:6px; font-size:0.9rem; color:var(--accent-2);
+    background:#0a131a;
+  }
+  .links{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.6rem}
+  .btn{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding:0.6rem 0.9rem;
+    border:1px solid var(--border-strong);
+    border-radius:999px; text-decoration:none;
+    color:var(--text);
+    background:linear-gradient(180deg, rgba(14,239,255,0.08), rgba(14,239,255,0.02));
+    transition: transform .08s ease, border-color .2s ease, box-shadow .2s ease;
+    box-shadow: 0 6px 20px rgba(14,239,255,0.06);
+    will-change: transform;
+  }
+  .btn:hover{
+    transform: translateY(-1px);
+    border-color: rgba(126,249,255,0.65);
+    box-shadow:0 10px 26px rgba(14,239,255,0.12);
+  }
+  .ok{color:var(--ok)}
+  footer{
+    margin-top:1.1rem; color:var(--muted); font-size:0.9rem;
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  }
+  .mono{font-variant-ligatures:none}
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6fbff; --panel:#e0e4e8; --text:#071018;
+      --muted:#385266; --accent:#0070f3; --accent-2:#4ac8ff;
+      --border:rgba(0,112,243,0.22); --border-strong:rgba(0,112,243,0.32);
+    }
+    body{ background:linear-gradient(180deg, #e9f4ff, #f7fbff); }
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card">
+      <div class="glow" aria-hidden="true"></div>
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1 class="mono">Rootcrafted</h1>
+            <div class="tag">Systems crafted with intent · Linux · Tooling · Chef → Technologist</div>
+          </div>
+        </div>
+        <div class="links">
+          <a class="btn" href="mailto:anthony@rootcrafted.tech">📧 Contact</a>
+          <a class="btn" href="https://rootcrafted.systems" rel="noopener">.systems</a>
+          <a class="btn" href="https://rootcrafted.dev" rel="noopener">.dev</a>
+        </div>
+      </header>
 
+      <section class="grid">
+        <div class="panel">
+          <h2>About</h2>
+          <p>Hi, I’m <strong>Anthony Daniel</strong> — former executive chef turned Linux systems enthusiast.</p>
+          <p>I build reliable, well-documented environments and automate the boring stuff.</p>
+          <p class="muted">Focus: Linux, shell tooling, networking, observability, and clean ops hygiene.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Contact</h2>
+          <p><span class="muted">Primary:</span> <a class="btn" href="mailto:anthony@rootcrafted.tech">anthony@rootcrafted.tech</a></p>
+          <p><span class="muted">Sysadmin:</span> <a class="btn" href="mailto:adv@rootcrafted.systems">adv@rootcrafted.systems</a></p>
+          <p><span class="muted">Dev:</span> <a class="btn" href="mailto:ant@rootcrafted.dev">ant@rootcrafted.dev</a></p>
+          <p><span class="muted">PGP:</span> <a class="btn" href="/pgp/rootcrafted_pubkey.asc" target="_blank" rel="noopener">Download Public Key</a></p>
+
+        </div>
+
+        <div class="panel">
+          <h2>Status</h2>
+          <p>Domains: <span class="ok">✓</span> <span class="mono">rootcrafted.tech</span>, <span class="mono">rootcrafted.systems</span>, <span class="mono">rootcrafted.dev</span></p>
+          <p>Email: <span class="ok">✓</span> Proton Unlimited (SPF/DKIM/DMARC)</p>
+          <p>Hosting: <span class="ok">✓</span> GitHub Pages + HTTPS</p>
+          <div class="links" style="margin-top:0.6rem">
+            <a class="btn" href="https://github.com/rootcrafted" rel="noopener">GitHub</a>
+            <!-- Add other links when ready -->
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> Rootcrafted · All systems crafted with intent.</div>
+        <div class="muted">/home/anthony — <span class="kbd">git push origin main</span></div>
+      </footer>
+    </main>
+  </div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
